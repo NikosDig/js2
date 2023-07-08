@@ -1,0 +1,7 @@
+@import "variables"; /* /src/scss/_variables.scss */
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/functions";
+
+.bg-info {
+  background-color: rgb(214, 214, 214) !important;
+}

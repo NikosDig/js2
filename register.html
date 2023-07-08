@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/css/index.css" />
+    <title>Register for new account || Weta</title>
+  </head>
+  <body class="text-bg-secondary text-dark">
+    <div
+      class="card w-75 text-center d-block my-5 m-auto border border-5 border-info"
+    >
+      <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+          <img
+            src="images/weta.png"
+            class="img-fluid rounded m-3 p-2 border border-2 border-primary"
+            alt="nikolodon image"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h1 class="card-title fw-bold">Register to Weta</h1>
+
+            <!-- form section -->
+
+            <form
+              class="needs-validation d-flex flex-column align-items-center"
+              novalidate
+              action="/profile/index.html"
+              method="get"
+            >
+              <div class="m-3 w-100">
+                <label for="registerEmail" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control text-center"
+                  id="registerEmail"
+                  placeholder="name@example.com"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a proper email.</div>
+              </div>
+              <div class="m-3 w-100">
+                <label for="registerPasword" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="registerPasword"
+                  class="form-control text-center"
+                  aria-describedby="passwordHelpBlock"
+                  placeholder="enter your password here"
+                  onkeyup="checkInput(registerPasword)"
+                  required
+                />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">
+                  Please enter a corect password
+                </div>
+                <div id="passwordHelpBlock" class="form-text">
+                  Your password must be minimum 8 characters long
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary w-75"
+                formaction="/profile/index.html"
+              >
+                Register
+              </button>
+            </form>
+            <h6>
+                You allready have an account? Log in 
+                <a href="index.html">here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="javascript/login.js"></script>
+</html>

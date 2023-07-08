@@ -1,0 +1,24 @@
+$blue: #7696be; //primary
+$indigo: #916fc8;
+$purple: #5d3b9c;
+$pink: #ab4578;
+$red: #fa2f44;
+$orange: #ffa053;
+$yellow: #ffdf7e;
+$green: #4fe49e;
+$teal: rgb(214, 214, 214); //info
+$cyan: #8eecff;
+$gray-600: #282c37; //secondary
+$gray-100: #f0f2f5; //light
+
+$spacer: 2rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+$font-family-sans-serif: poppins, roboto, Arial, Helvetica, sans-serif;
