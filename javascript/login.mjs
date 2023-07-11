@@ -1,6 +1,9 @@
+import { API_URL } from "./functions.mjs";
+
 const loginPassword = document.querySelector("#logInPassword");
 const button = document.querySelector(".btn");
 
+//code imported from bootstrap for adding custom validation to the forms
 // bootstrap form validation
 (() => {
   "use strict";
@@ -26,7 +29,12 @@ const button = document.querySelector(".btn");
 })();
 
 // check if input on password is large enough ,smaller than 8 in this case
-
+/**
+ *
+ * @param {*} input
+ * the output that the user has added as a password.
+ * checks if the user has typed correct length password and if yes activates the register button of the form
+ */
 function checkInput(input) {
   var value = input.value;
 
