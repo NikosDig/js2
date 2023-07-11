@@ -2,6 +2,31 @@ import { API_URL } from "./functions.mjs";
 
 const registerForm = document.querySelector(".registerForm");
 
+//code imported from bootstrap for adding custom validation to the forms
+// bootstrap form validation
+(() => {
+  "use strict";
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach((form) => {
+    form.addEventListener(
+      "submit",
+      (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
+
 /**
  * main function that creates the profiile object which is added to the api call
  * to create a new user
@@ -22,15 +47,37 @@ registerForm.addEventListener("submit", (e) => {
  * call to the API to register a new user
  */
 async function registerUser(profile) {
-  const url = API_URL + "/auth/register";
+  try {
+    const url = API_URL + "/auth/register";
 
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "post",
-    body: JSON.stringify(profile),
-  });
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "post",
+      body: JSON.stringify(profile),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
+    setTimeout(redirectUserToLogInPage(response), 3000);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ *
+ * @param {object} response
+ * checks if the request was succesfull and if yes redirects the user to login page
+ * if not ,alerts him about the fail
+ */
+function redirectUserToLogInPage(response) {
+  if (response.ok) {
+    location.href = "index.html";
+    alert("Register user successfull,you are beeing redirected to login page");
+  } else {
+    alert(
+      "something whent wrong, check if you filled the fields correctly and try again"
+    );
+  }
 }
