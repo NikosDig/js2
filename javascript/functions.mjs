@@ -35,3 +35,74 @@ export function loadJWT(key) {
 export function deleteJWT(key) {
   localStorage.removeItem(key);
 }
+
+export function showPosts() {}
+
+export function showPost(id) {}
+
+/**
+ * 
+ * @param {object} postData titel and body of post
+ * @returns the updates version of the post you want to modify
+ * requires also the id of the post
+ */
+export async function updatePost(postData) {
+  const url = API_URL + "/posts/"+ postData.id;
+  const token = loadJWT("token");
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    method:"put",
+    body: JSON.stringify(postData),
+  });
+  const result = await response.json();
+  console.log(result);
+  return result
+}
+
+
+/**
+ * 
+ * @param {object} postData title and body of post you want to create 
+ * @returns title and body of the post you want to create
+ * the function takes the tile and body of the post you want to create and 
+ * creates the post
+ */
+export async function createPost(postData) {
+  const url = API_URL + "/posts";
+  const token = loadJWT("token");
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    method:"post",
+    body: JSON.stringify(postData),
+  });
+  const result = await response.json();
+  console.log(result);
+  return result
+}
+
+/**
+ * 
+ * @param {number} id takes the id of the post you want to delete
+ * @returns 
+ * takes the id of the post you want to delete and deletes that post
+ */
+export async function removePost(id) {
+  const url = API_URL + "/posts/"+ id;
+  const token = loadJWT("token");
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    method:"delete",
+  });
+  const result = await response.json();
+  console.log(result,"post propably deleted");
+  return result
+}
