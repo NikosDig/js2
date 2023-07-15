@@ -1,7 +1,10 @@
 import { API_URL } from "./functions.mjs";
+import { saveJWT } from "./functions.mjs";
 
-const loginPassword = document.querySelector("#logInPassword");
-const button = document.querySelector(".btn");
+const loginForm = document.querySelector(".loginForm");
+
+// 12345test@stud.noroff.no
+// 12345test
 
 //code imported from bootstrap for adding custom validation to the forms
 // bootstrap form validation
@@ -28,22 +31,43 @@ const button = document.querySelector(".btn");
   });
 })();
 
-// check if input on password is large enough ,smaller than 8 in this case
+/**
+ * main function that creates the profiile object which is added to the api call
+ * to create a new user
+ */
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const profile = Object.fromEntries(formData.entries()); //stolen line from Oliver
+
+  loginUser(profile);
+});
+
 /**
  *
- * @param {*} input
- * the output that the user has added as a password.
- * checks if the user has typed correct length password and if yes activates the register button of the form
+ * @param {object} profile
+ * takes the data from the form entries and makes an asynchronous
+ * call to the API to login a new user
  */
-function checkInput(input) {
-  var value = input.value;
+async function loginUser(profile) {
+  try {
+    const url = `${API_URL}/auth/login`;
 
-  if (value.length < 8) {
-    input.classList.remove("is-valid");
-    input.classList.add("is-invalid");
-  } else {
-    input.classList.add("is-valid");
-    input.classList.remove("is-invalid");
-    button.removeAttribute("disabled", false);
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "post",
+      body: JSON.stringify(profile),
+    });
+
+    const { accessToken, ...user } = await response.json();
+
+    saveJWT("token", accessToken);
+    saveJWT("user", user);
+    console.log("all went well");
+  } catch (error) {
+    console.log(error);
   }
 }
