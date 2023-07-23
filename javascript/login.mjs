@@ -1,6 +1,5 @@
 import { API_URL } from "./functions.mjs";
 import { saveJWT } from "./functions.mjs";
-import { removePost } from "./functions.mjs";
 
 const loginForm = document.querySelector(".loginForm");
 
@@ -73,6 +72,11 @@ async function loginUser(profile) {
   }
 }
 
-  // removePost(6831);
 
-// /6831
+import { showPosts } from "./functions.mjs";
+
+import { showOnePost } from "./functions.mjs";
+
+
+import { createPost } from "./functions.mjs";
+

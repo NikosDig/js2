@@ -36,10 +36,6 @@ export function deleteJWT(key) {
   localStorage.removeItem(key);
 }
 
-export function showPosts() {}
-
-export function showPost(id) {}
-
 /**
  * 
  * @param {object} postData titel and body of post
@@ -105,4 +101,40 @@ export async function removePost(id) {
   const result = await response.json();
   console.log(result,"post propably deleted");
   return result
+}
+
+/**
+ * 
+ * @returns the last 100 posts the have been created
+ */
+export async function showPosts () {
+  const url = API_URL+"/posts/";
+  const token = loadJWT("token");
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }});
+  const data = await response.json();
+  console.log(data);
+  return data
+}
+
+
+/**
+ * 
+ * @param {number} id the id of the particular post 
+ * @returns returns the spesific post you have selected (needs id of post)
+ */
+export async function showOnePost (id) {
+  const url = `${API_URL}/posts/${id}`;
+  const token = loadJWT("token");
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }});
+  const data = await response.json();
+  console.log(data);
+  return data
 }
