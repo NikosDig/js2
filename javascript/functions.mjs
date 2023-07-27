@@ -116,7 +116,6 @@ export async function showPosts () {
       "Authorization": `Bearer ${token}`
     }});
   const data = await response.json();
-  console.log(data);
   return data
 }
 

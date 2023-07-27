@@ -94,13 +94,53 @@
             <form
               action="post"
               class="border border-3 border-primary p-2 bg-info"
+              name="feedForm"
+              id="feedForm"
             >
+              <h2 class="text-center">Create new post</h2>
+              <div class="m-3">
+                <label for="feedTitle" class="form-label">Title</label>
+                <input
+                  type="text"
+                  name="feedTitle"
+                  class="form-control text-center"
+                  id="feedTitle"
+                  placeholder="Your title of the post here"
+                  required
+                  title="A titel is needed to create a new post"
+                />
+              </div>
+              <div class="m-3">
+                <label for="feedImage" class="form-label">Image</label>
+                <input
+                  type="url"
+                  name="feedImage"
+                  class="form-control text-center"
+                  id="feedImage"
+                  placeholder="you need to provide a valid URL of a pcture"
+                  title="Not required.You need to provide a valid URL of any image"
+                />
+              </div>
+              <div class="m-3">
+                <label for="feedTags" class="form-label">Tags</label>
+                <input
+                  type="text"
+                  name="feedTags"
+                  class="form-control text-center"
+                  id="feedTags"
+                  placeholder="enter tags comma seperated"
+                  title="enter tags comma seperated"
+                />
+              </div>
               <div class="input-group">
                 <textarea
                   class="form-control"
                   placeholder="Post something..."
                   id="floatingTextarea2"
                   style="height: 100px"
+                  name="floatingTextarea2"
+                  title="write your main post here"
+                  required
                 ></textarea>
                 <button
                   class="btn btn-outline-primary"
@@ -123,92 +163,94 @@
             <div
               class="col-12 w-100 d-flex flex-column justify-content-center bg-info"
             >
-              <h4 class="text-uppercase h5 p-1">posts:</h4>
+              <h2 class="text-uppercase h5 p-1 text-center">posts:</h2>
               <select class="form-select" aria-label="Default select example">
                 <option selected>Sort posts by:</option>
                 <option value="1">Date (earliest)</option>
                 <option value="2">Date (latest)</option>
                 <option value="3">Person</option>
               </select>
-              <div class="card my-3 border border-primary">
-                <div
-                  class="card-header d-flex align-items-center align-items-center justify-content-between"
-                >
-                  <div>
-                    <img
-                      src="../images/bean.png"
-                      alt=""
-                      width="40px"
-                      height="40px"
-                      class="rounded-circle"
-                    />
-                    <h5>Mr Bean</h5>
+              <div class="feedContainer">
+                <div class="card my-3 border border-primary">
+                  <div
+                    class="card-header d-flex align-items-center align-items-center justify-content-between"
+                  >
+                    <div>
+                      <img
+                        src="../images/bean.png"
+                        alt=""
+                        width="40px"
+                        height="40px"
+                        class="rounded-circle"
+                      />
+                      <h5>Mr Bean</h5>
+                    </div>
+                    <div class="card-footer text-black-50 border rounded-pill">
+                      2 days ago
+                    </div>
                   </div>
-                  <div class="card-footer text-black-50 border rounded-pill">
-                    2 days ago
-                  </div>
-                </div>
-                <div class="card-body bg-primary text-dark">
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Expedita reprehenderit minima quos commodi enim totam facere
-                    iure explicabo aut ex!
-                  </p>
-                </div>
-              </div>
-              <div class="card my-3 border border-primary">
-                <div
-                  class="card-header d-flex align-items-center align-items-center justify-content-between"
-                >
-                  <div>
-                    <img
-                      src="../images/bean.png"
-                      alt=""
-                      width="40px"
-                      height="40px"
-                      class="rounded-circle"
-                    />
-                    <h5>Mr Bean</h5>
-                  </div>
-                  <div class="card-footer text-black-50 border rounded-pill">
-                    23.03.2023
+                  <div class="card-body bg-primary text-dark">
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Expedita reprehenderit minima quos commodi enim totam
+                      facere iure explicabo aut ex!
+                    </p>
                   </div>
                 </div>
-                <div class="card-body bg-primary text-dark">
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Expedita reprehenderit minima quos commodi enim totam facere
-                    iure explicabo aut ex!
-                  </p>
-                </div>
-              </div>
-              <div class="card my-3 border border-primary">
-                <div
-                  class="card-header d-flex align-items-center align-items-center justify-content-between"
-                >
-                  <div>
-                    <img
-                      src="../images/bean.png"
-                      alt=""
-                      width="40px"
-                      height="40px"
-                      class="rounded-circle"
-                    />
-                    <h5>Mr Bean</h5>
+                <div class="card my-3 border border-primary">
+                  <div
+                    class="card-header d-flex align-items-center align-items-center justify-content-between"
+                  >
+                    <div>
+                      <img
+                        src="../images/bean.png"
+                        alt=""
+                        width="40px"
+                        height="40px"
+                        class="rounded-circle"
+                      />
+                      <h5>Mr Bean</h5>
+                    </div>
+                    <div class="card-footer text-black-50 border rounded-pill">
+                      23.03.2023
+                    </div>
                   </div>
-                  <div class="card-footer text-black-50 border rounded-pill">
-                    10.02.2022
+                  <div class="card-body bg-primary text-dark">
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Expedita reprehenderit minima quos commodi enim totam
+                      facere iure explicabo aut ex!
+                    </p>
                   </div>
                 </div>
-                <div class="card-body bg-primary text-dark">
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Consequatur sunt incidunt vel tempore earum qui, alias
-                    tenetur voluptates dolore perspiciatis saepe aspernatur
-                    quibusdam error sequi magnam maxime esse quis at quam
-                    ducimus? Atque deserunt optio dolore doloremque! Unde,
-                    voluptatum in!
-                  </p>
+                <div class="card my-3 border border-primary">
+                  <div
+                    class="card-header d-flex align-items-center align-items-center justify-content-between"
+                  >
+                    <div>
+                      <img
+                        src="../images/bean.png"
+                        alt=""
+                        width="40px"
+                        height="40px"
+                        class="rounded-circle"
+                      />
+                      <h5>Mr Bean</h5>
+                    </div>
+                    <div class="card-footer text-black-50 border rounded-pill">
+                      10.02.2022
+                    </div>
+                  </div>
+                  <div class="card-body bg-primary text-dark">
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Consequatur sunt incidunt vel tempore earum qui, alias
+                      tenetur voluptates dolore perspiciatis saepe aspernatur
+                      quibusdam error sequi magnam maxime esse quis at quam
+                      ducimus? Atque deserunt optio dolore doloremque! Unde,
+                      voluptatum in!
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -242,5 +284,6 @@
         </div>
       </nav>
     </footer>
+    <script src="../javascript/feed.mjs" type="module"></script>
   </body>
 </html>
