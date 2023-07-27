@@ -40,7 +40,7 @@ loginForm.addEventListener("submit", (e) => {
   const form = e.target;
   const formData = new FormData(form);
   const profile = Object.fromEntries(formData.entries()); //stolen line from Oliver
-  location.href = "/profile"
+  //location.href = "/profile"
   loginUser(profile);
 });
 
@@ -71,4 +71,3 @@ async function loginUser(profile) {
     console.log(error);
   }
 }
-

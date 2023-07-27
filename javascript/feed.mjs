@@ -6,6 +6,8 @@ import { loadJWT } from "./functions.mjs";
 const feedForm = document.querySelector("#feedForm");
 const feedContainer = document.querySelector(".feedContainer");
 feedContainer.innerHTML = "";
+loadJWT("token");
+loadJWT("user");
 
 feedForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -61,8 +63,3 @@ async function showAllThePostsOnThePage() {
 }
 
 showAllThePostsOnThePage();
-
-// createPost({
-//   title: "test subject",
-//   body: "test subject body",
-// });
