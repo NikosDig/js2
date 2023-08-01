@@ -2,6 +2,7 @@ import { API_URL } from "./functions.mjs";
 import { showPosts } from "./functions.mjs";
 import { createPost } from "./functions.mjs";
 import { loadJWT } from "./functions.mjs";
+import { removePost } from "./functions.mjs";
 
 const feedForm = document.querySelector("#feedForm");
 const feedContainer = document.querySelector(".feedContainer");
@@ -14,8 +15,9 @@ feedForm.addEventListener("submit", (e) => {
   const form = e.target;
   const formData = new FormData(form);
   const post = Object.fromEntries(formData.entries()); //stolen line from Oliver
-  console.log(post);
   createPost(post);
+  feedContainer.innerHTML = "";
+  showAllThePostsOnThePage();
 });
 
 /**
@@ -27,19 +29,42 @@ function renderPosts(postData) {
   //transforms the date to a more readable date
   let strDate = postData.created.split("T")[0];
 
-  return (feedContainer.innerHTML += `<div class="card my-3 border border-primary">
+  if (postData.media) {
+    return (feedContainer.innerHTML += `
+      <div class="card my-3 border border-primary">
+      <a class="text-decoration-none" href="singlePost.html?id=${postData.id}">
+      <div
+        class="card-header d-flex align-items-center align-items-center justify-content-between"
+      >
+        <div>
+        <img
+        src="${postData.media}"
+        alt="${postData.id} ${postData.title}"
+        title= "${postData.title}"
+        width="40px"
+        height="40px"
+        class="rounded-circle"
+      />
+          <h5>${postData.title}</h5>
+        </div>
+        <div class="card-footer text-black-50 border rounded-pill">
+          ${strDate}
+        </div>
+      </div>
+      <div class="card-body bg-primary text-dark">
+        <p class="card-text">
+          ${postData.body}
+        </p>
+      </div>
+      </a></div>`);
+  } else {
+    return (feedContainer.innerHTML += `
+    <div class="card my-3 border border-primary">
+    <a class="text-decoration-none" href="singlePost.html?id=${postData.id} ">
     <div
       class="card-header d-flex align-items-center align-items-center justify-content-between"
     >
       <div>
-      <img
-      src="${postData.media}"
-      alt="${postData.id} ${postData.title}"
-      title= "${postData.title}"
-      width="40px"
-      height="40px"
-      class="rounded-circle"
-    />
         <h5>${postData.title}</h5>
       </div>
       <div class="card-footer text-black-50 border rounded-pill">
@@ -50,7 +75,9 @@ function renderPosts(postData) {
       <p class="card-text">
         ${postData.body}
       </p>
-    </div>`);
+    </div>
+    </a></div>`);
+  }
 }
 
 /**

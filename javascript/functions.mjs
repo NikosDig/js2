@@ -37,33 +37,32 @@ export function deleteJWT(key) {
 }
 
 /**
- * 
+ *
  * @param {object} postData titel and body of post
  * @returns the updates version of the post you want to modify
  * requires also the id of the post
  */
 export async function updatePost(postData) {
-  const url = API_URL + "/posts/"+ postData.id;
+  const url = API_URL + "/posts/" + postData.id;
   const token = loadJWT("token");
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    method:"put",
+    method: "put",
     body: JSON.stringify(postData),
   });
   const result = await response.json();
   console.log(result);
-  return result
+  return result;
 }
 
-
 /**
- * 
- * @param {object} postData title and body of post you want to create 
+ *
+ * @param {object} postData title and body of post you want to create
  * @returns title and body of the post you want to create
- * the function takes the tile and body of the post you want to create and 
+ * the function takes the tile and body of the post you want to create and
  * creates the post
  */
 export async function createPost(postData) {
@@ -72,68 +71,69 @@ export async function createPost(postData) {
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    method:"post",
+    method: "post",
     body: JSON.stringify(postData),
   });
   const result = await response.json();
   console.log(result);
-  return result
+  return result;
 }
 
 /**
- * 
+ *
  * @param {number} id takes the id of the post you want to delete
- * @returns 
+ * @returns
  * takes the id of the post you want to delete and deletes that post
  */
 export async function removePost(id) {
-  const url = API_URL + "/posts/"+ id;
+  const url = API_URL + "/posts/" + id;
   const token = loadJWT("token");
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    method:"delete",
+    method: "delete",
   });
   const result = await response.json();
-  console.log(result,"post propably deleted");
-  return result
+  console.log(result, "post propably deleted");
+
+  return result;
 }
 
 /**
- * 
+ *
  * @returns the last 100 posts the have been created
  */
-export async function showPosts () {
-  const url = API_URL+"/posts/";
+export async function showPosts() {
+  const url = API_URL + "/posts/";
   const token = loadJWT("token");
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    }});
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const data = await response.json();
-  return data
+  return data;
 }
 
-
 /**
- * 
- * @param {number} id the id of the particular post 
+ *
+ * @param {number} id the id of the particular post
  * @returns returns the spesific post you have selected (needs id of post)
  */
-export async function showOnePost (id) {
+export async function showOnePost(id) {
   const url = `${API_URL}/posts/${id}`;
   const token = loadJWT("token");
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    }});
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const data = await response.json();
-  console.log(data);
-  return data
+  return data;
 }
