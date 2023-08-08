@@ -18,27 +18,22 @@ async function renderForm(index) {
 }
 
 renderForm(id);
-
-const update = document.querySelector("#updatePost");
 const remove = document.querySelector("#deletePost");
+const mainHeading = document.querySelector(".mainHeading");
 
-update.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   const target = e.target;
   const formData = new FormData(target);
   const post = Object.fromEntries(formData.entries()); //stolen line from Oliver
-  updatePost(id);
-  console.log("updated");
+  post.id = id;
+  updatePost(post);
+  mainHeading.innerText = "Post updated succesfully";
+  mainHeading.classList.add("text-success");
 });
 
 remove.addEventListener("click", (e) => {
   e.preventDefault();
   removePost(id);
   console.log("removed");
-  if (response.ok) {
-    const userMessage = document.querySelector(".userMessage");
-    userMessage.innerHTML = `<h2 class="text-center p-2 m-5"> Post deleted </h2>`;
-  } else {
-    alert("You can only delete posts you created");
-  }
 });

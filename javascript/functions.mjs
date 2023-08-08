@@ -99,8 +99,13 @@ export async function removePost(id) {
   });
   const result = await response.json();
   console.log(result, "post propably deleted");
-
-  return result;
+  if (response.ok) {
+    const userMessage = document.querySelector(".userMessage");
+    userMessage.innerHTML = `<h2 class="text-center p-2 m-5"> Post deleted </h2>`;
+    return result;
+  } else {
+    alert("You can only delete posts you created");
+  }
 }
 
 /**
