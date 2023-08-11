@@ -35,13 +35,13 @@ const loginForm = document.querySelector(".loginForm");
  * main function that creates the profiile object which is added to the api call
  * to create a new user
  */
-loginForm.addEventListener("submit", (e) => {
+loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
   const profile = Object.fromEntries(formData.entries()); //stolen line from Oliver
+  await loginUser(profile);
   location.href = "/profile";
-  loginUser(profile);
 });
 
 /**

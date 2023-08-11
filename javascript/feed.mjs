@@ -10,14 +10,14 @@ feedContainer.innerHTML = "";
 loadJWT("token");
 loadJWT("user");
 
-feedForm.addEventListener("submit", (e) => {
+feedForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
   const post = Object.fromEntries(formData.entries()); //stolen line from Oliver
   createPost(post);
   feedContainer.innerHTML = "";
-  showAllThePostsOnThePage();
+  await showAllThePostsOnThePage();
 });
 
 /**
