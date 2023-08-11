@@ -164,11 +164,14 @@
               class="col-12 w-100 d-flex flex-column justify-content-center bg-info"
             >
               <h2 class="text-uppercase h5 p-1 text-center">posts:</h2>
-              <select class="form-select" aria-label="Default select example">
+              <select
+                class="form-select shortOptions"
+                aria-label="Default select example"
+                name="shortOptions"
+              >
                 <option selected>Sort posts by:</option>
-                <option value="1">Date (earliest)</option>
-                <option value="2">Date (latest)</option>
-                <option value="3">Person</option>
+                <option value="1">Date (latest)</option>
+                <option value="2">Date (earliest)</option>
               </select>
               <div class="feedContainer"></div>
             </div>

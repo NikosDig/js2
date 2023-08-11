@@ -2,7 +2,6 @@ import { API_URL } from "./functions.mjs";
 import { showPosts } from "./functions.mjs";
 import { createPost } from "./functions.mjs";
 import { loadJWT } from "./functions.mjs";
-import { removePost } from "./functions.mjs";
 
 const feedForm = document.querySelector("#feedForm");
 const feedContainer = document.querySelector(".feedContainer");
@@ -90,3 +89,54 @@ async function showAllThePostsOnThePage() {
 }
 
 showAllThePostsOnThePage();
+
+function minMax(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr.id[j] < arr.id[min]) {
+        min = j;
+      }
+    }
+    if (min !== i) {
+      const temp = arr.id[i];
+      arr.id[i] = arr.id[min];
+      arr.id[min] = temp;
+    }
+  }
+  return arr;
+}
+function maxMin(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] > arr[min]) {
+        min = j;
+      }
+    }
+    if (min !== i) {
+      const temp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = temp;
+    }
+  }
+  return arr;
+}
+// console.log(minMax([10, 2, 6, 3, 1, 20, 5]));
+
+const shortOptions = document.querySelector(".shortOptions");
+
+shortOptions.addEventListener("change", async (e) => {
+  if (e.target.value === "1") {
+    feedContainer.innerHTML = "";
+    const postData = await showPosts();
+    const step1 = postData.map((x) => minMax(x));
+    const step1Reversed = step1.reverse();
+    return step1Reversed.map((x) => renderPosts(x));
+  } else if (e.target.value === "2") {
+    feedContainer.innerHTML = "";
+    const postData = await showPosts();
+    const step2 = postData.map((x) => maxMin(x));
+    return step2.map((x) => renderPosts(x));
+  } else return;
+});
