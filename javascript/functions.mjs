@@ -140,5 +140,9 @@ export async function showOnePost(id) {
     },
   });
   const data = await response.json();
-  return data;
+  if (response.ok) {
+    return data;
+  } else {
+    return console.log("Post not found");
+  }
 }

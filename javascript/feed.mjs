@@ -9,6 +9,14 @@ feedContainer.innerHTML = "";
 loadJWT("token");
 loadJWT("user");
 
+const searchForm = document.querySelector(".searchForm");
+
+searchForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await showPosts();
+  location.href = `/search/index.html?id=${searchForm.search.value}`;
+});
+
 feedForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -122,7 +130,6 @@ function maxMin(arr) {
   }
   return arr;
 }
-// console.log(minMax([10, 2, 6, 3, 1, 20, 5]));
 
 const shortOptions = document.querySelector(".shortOptions");
 

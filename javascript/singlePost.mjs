@@ -2,11 +2,20 @@ import { API_URL } from "./functions.mjs";
 import { showOnePost } from "./functions.mjs";
 import { updatePost } from "./functions.mjs";
 import { removePost } from "./functions.mjs";
+import { showPosts } from "./functions.mjs";
 
 const form = document.querySelector("#singlePostForm");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+
+const searchForm = document.querySelector(".searchForm");
+
+searchForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  await showPosts();
+  location.href = `/search/index.html?id=${searchForm.search.value}`;
+});
 
 async function renderForm(index) {
   const post = await showOnePost(index);
