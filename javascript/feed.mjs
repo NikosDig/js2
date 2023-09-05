@@ -5,15 +5,18 @@ import { loadJWT } from "./functions.mjs";
 
 const feedForm = document.querySelector("#feedForm");
 const feedContainer = document.querySelector(".feedContainer");
+// clears posts container wich later desplays all the posts
 feedContainer.innerHTML = "";
+//load auth token from the memory
 loadJWT("token");
+// load user details from the memory
 loadJWT("user");
 
 const searchForm = document.querySelector(".searchForm");
 
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  await showPosts();
+  // await showPosts();
   location.href = `/search/index.html?id=${searchForm.search.value}`;
 });
 
