@@ -54,7 +54,7 @@ export async function updatePost(postData) {
     body: JSON.stringify(postData),
   });
   const result = await response.json();
-  console.log(result);
+  //console.log(result);
   return result;
 }
 
@@ -68,17 +68,22 @@ export async function updatePost(postData) {
 export async function createPost(postData) {
   const url = API_URL + "/posts";
   const token = loadJWT("token");
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    method: "post",
-    body: JSON.stringify(postData),
-  });
-  const result = await response.json();
-  console.log(result);
-  return result;
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      method: "post",
+      body: JSON.stringify(postData),
+    });
+    const result = await response.json();
+    //console.log(result);
+    return result;
+  } catch (error) {
+    console.log("There was an error", error);
+    alert("There was en error creating the post,try again later");
+  }
 }
 
 /**
@@ -98,7 +103,7 @@ export async function removePost(id) {
     method: "delete",
   });
   const result = await response.json();
-  console.log(result, "post propably deleted");
+  console.log(result, "post deleted");
   if (response.ok) {
     const userMessage = document.querySelector(".userMessage");
     userMessage.innerHTML = `<h2 class="text-center p-2 m-5"> Post deleted </h2>`;
@@ -115,14 +120,19 @@ export async function removePost(id) {
 export async function showPosts() {
   const url = API_URL + "/posts/";
   const token = loadJWT("token");
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("There was an error", error);
+    alert("There was an error try again later");
+  }
 }
 
 /**
