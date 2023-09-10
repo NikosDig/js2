@@ -16,7 +16,6 @@ const searchForm = document.querySelector(".searchForm");
 
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  // await showPosts();
   location.href = `/search/index.html?id=${searchForm.search.value}`;
 });
 
@@ -25,7 +24,7 @@ feedForm.addEventListener("submit", async (e) => {
   const form = e.target;
   const formData = new FormData(form);
   const post = Object.fromEntries(formData.entries()); //stolen line from Oliver
-  createPost(post);
+  await createPost(post);
   feedContainer.innerHTML = "";
   await showAllThePostsOnThePage();
 });
@@ -37,7 +36,7 @@ feedForm.addEventListener("submit", async (e) => {
  */
 function renderPosts(postData) {
   //transforms the date to a more readable date
-  let strDate = postData.created.split("T")[0];
+  let strDate = new Date(postData.created).toLocaleDateString();
 
   if (postData.media) {
     return (feedContainer.innerHTML += `
