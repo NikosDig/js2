@@ -50,9 +50,7 @@ function renderPosts(postData) {
         src="${postData.media}"
         alt="${postData.id} ${postData.title}"
         title= "${postData.title}"
-        width="40px"
-        height="40px"
-        class="rounded-circle"
+        class="rounded-circle imgFix"
       />
           <h5>${postData.title}</h5>
         </div>
@@ -92,6 +90,7 @@ function renderPosts(postData) {
 /**
  *
  * @returns returns all the data from the API as HTML
+ * (after creating a post it reloads all the posts so that you dont have to reload the page to see the newlly created post)
  */
 async function showAllThePostsOnThePage() {
   const postData = await showPosts();
@@ -99,7 +98,11 @@ async function showAllThePostsOnThePage() {
 }
 
 showAllThePostsOnThePage();
-
+/**
+ *
+ * @param {array} arr array of posts
+ * @returns the posts shorted in a fancier (not better) way, from top to bottom
+ */
 function minMax(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
@@ -116,6 +119,11 @@ function minMax(arr) {
   }
   return arr;
 }
+/**
+ *
+ * @param {array} arr array of posts
+ * @returns the posts shorted in a fancier (not better) way , from bottom to top
+ */
 function maxMin(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
