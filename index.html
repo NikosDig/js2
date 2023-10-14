@@ -32,15 +32,16 @@
             <!-- form section -->
 
             <form
-              class="needs-validation d-flex flex-column align-items-center"
+              class="needs-validation d-flex flex-column align-items-center loginForm"
               novalidate
-              action="/profile"
-              method="get"
+              action="/auth/login"
+              method="post"
             >
               <div class="m-3 w-100">
                 <label for="logInEmail" class="form-label">Email address</label>
                 <input
                   type="email"
+                  name="email"
                   class="form-control text-center"
                   id="logInEmail"
                   placeholder="name@example.com"
@@ -53,11 +54,11 @@
                 <label for="logInPassword" class="form-label">Password</label>
                 <input
                   type="password"
+                  name="password"
                   id="logInPassword"
                   class="form-control text-center"
                   aria-describedby="passwordHelpBlock"
                   placeholder="enter your password here"
-                  onkeyup="checkInput(logInPassword)"
                   required
                 />
                 <!-- <div class="valid-feedback">Looks good!</div> -->
@@ -69,7 +70,6 @@
                 type="submit"
                 class="btn btn-primary w-75"
                 formaction="/profile/index.html"
-                disabled
               >
                 Submit
               </button>
@@ -82,6 +82,6 @@
         </div>
       </div>
     </div>
-    <script src="javascript/login.js"></script>
+    <script src="./javascript/login.mjs" type="module"></script>
   </body>
 </html>

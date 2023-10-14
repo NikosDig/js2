@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dist/css/index.css" />
+    <link rel="icon" href="images/weta.png" type="image/png" />
     <title>Register for new account || Weta</title>
   </head>
   <body class="text-bg-secondary text-dark">
@@ -13,11 +14,13 @@
     >
       <div class="row g-0 align-items-center">
         <div class="col-md-4">
-          <img
-            src="images/weta.png"
-            class="img-fluid rounded m-3 p-2 border border-2 border-primary"
-            alt="nikolodon image"
-          />
+          <a href="index.html">
+            <img
+              src="images/weta.png"
+              class="img-fluid rounded m-3 p-2 border border-2 border-primary"
+              alt="weta image"
+            />
+          </a>
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -26,10 +29,10 @@
             <!-- form section -->
 
             <form
-              class="needs-validation d-flex flex-column align-items-center"
+              class="needs-validation d-flex flex-column align-items-center registerForm"
               novalidate
-              action="/profile/index.html"
-              method="get"
+              action="/auth/register"
+              method="post"
             >
               <div class="m-3 w-100">
                 <label for="registerEmail" class="form-label"
@@ -37,24 +40,61 @@
                 >
                 <input
                   type="email"
+                  name="email"
                   class="form-control text-center"
                   id="registerEmail"
-                  placeholder="name@example.com"
+                  placeholder="@noroff.no OR @stud.noroff.no domains ONLY"
                   required
+                  pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                  title="only @noroff.no or @stud.noroff.no can register"
                 />
                 <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Please enter a proper email.</div>
+                <div class="invalid-feedback">only @noroff.no OR @stud.noroff.no can register</div>
+              </div>
+              <div class="m-3 w-100">
+                <label for="registerName" class="form-label"
+                  >Name</label
+                >
+                <input
+                  type="name"
+                  name="name"
+                  class="form-control text-center"
+                  id="registerName"
+                  placeholder="e.g John_Doe"
+                  required
+                  pattern="^[\w]+$"
+                  title="no spaces or dashes,if you require a space add an underscore (_)"
+                />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a proper name(no spaces).</div>
+              </div>
+              <div class="m-3 w-100">
+                <label for="registerMedia" class="form-label"
+                  >Avatar (Optional)</label
+                >
+                <input
+                  type="url"
+                  name="avatar"
+                  class="form-control text-center"
+                  id="registerMedia"
+                  placeholder="you need to provide a valid URL of a pcture"
+                  title="Not required.You need to provide a valid URL of any image"
+                />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please enter a url of a picture.</div>
               </div>
               <div class="m-3 w-100">
                 <label for="registerPasword" class="form-label">Password</label>
                 <input
                   type="password"
+                  name="password"
+                  minlength="8"
                   id="registerPasword"
                   class="form-control text-center"
                   aria-describedby="passwordHelpBlock"
                   placeholder="enter your password here"
-                  onkeyup="checkInput(registerPasword)"
                   required
+                  title="Your password needs to be minimum 8 characters long"
                 />
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">
@@ -80,5 +120,5 @@
       </div>
     </div>
   </body>
-  <script src="javascript/login.js"></script>
+  <script src="javascript/register.mjs" type="module"></script>
 </html>

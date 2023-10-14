@@ -1,8 +1,6 @@
-const loginPassword = document.querySelector("#logInPassword");
-const button = document.querySelector(".btn");
-
+//code imported from bootstrap for adding custom validation to the forms
 // bootstrap form validation
-(() => {
+export const externalDependecy = (async () => {
   "use strict";
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -24,18 +22,3 @@ const button = document.querySelector(".btn");
     );
   });
 })();
-
-// check if input on password is large enough ,smaller than 8 in this case
-
-function checkInput(input) {
-  var value = input.value;
-
-  if (value.length < 8) {
-    input.classList.remove("is-valid");
-    input.classList.add("is-invalid");
-  } else {
-    input.classList.add("is-valid");
-    input.classList.remove("is-invalid");
-    button.removeAttribute("disabled", false);
-  }
-}

@@ -54,18 +54,19 @@
               <li class="nav-item">
                 <a
                   class="nav-link p-2 text-primary text-decoration-underline"
-                  href="in"
+                  href="#"
                   data-ol-has-click-handler=""
                   >Profile</a
                 >
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex searchForm" role="search" name="search">
               <input
                 class="form-control me-2 border border-3 border-primary"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                name="search"
               />
               <button class="btn btn-outline-primary" type="submit">
                 Search
@@ -88,8 +89,9 @@
             <div class="col-12 d-flex p-0">
               <img
                 src="../images/bean.png"
+                title="You havent selected a banner for your profile yet"
                 alt="Mr Bean"
-                class="rounded-circle border border-3 my-3 mx-auto"
+                class="rounded-circle border border-3 my-3 mx-auto profilePicture"
                 width="290"
                 height="290"
               />
@@ -98,7 +100,7 @@
               class="col-12 border border-3 border-primary rounded d-flex align-items-center bg-info"
             >
               <div class="col-6">
-                <h1 class="h4 p-2">Mr Bean</h1>
+                <h1 class="h4 p-2 profileName">Mr Bean</h1>
               </div>
               <div class="col-6 d-flex justify-content-end">
                 <button class="btn btn-primary m-0">Follow</button>
@@ -182,7 +184,7 @@
               </div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="row d-flex w-100 mx-auto my-3 border border-3 border-primary rounded"
           >
             <div
@@ -242,7 +244,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
     </main>
@@ -262,7 +264,7 @@
             <li class="nav-item">
               <a
                 class="nav-link p-2 text-primary"
-                href="in"
+                href="#"
                 data-ol-has-click-handler=""
                 >Profile</a
               >
@@ -271,5 +273,6 @@
         </div>
       </nav>
     </footer>
+    <script src="../javascript/profile.mjs" type="module"></script>
   </body>
 </html>
